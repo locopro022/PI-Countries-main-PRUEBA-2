@@ -1,0 +1,103 @@
+:root {
+  --fondo: rgb(196, 255, 248);
+  --pri: rgb(17, 32, 64);
+  --shadow: rgb(0, 0, 0, 0.3);
+  --shadow-soft: rgba(0, 0, 0, 0.1);
+  --sec: rgb(17, 95, 85);
+  --sec-shine: rgb(36, 143, 129);
+  --sec-trans: rgb(17, 95, 85, 0.5);
+  --text-button: white;
+}
+.contInicio {
+  display: flex;
+  flex-direction: column;
+}
+.bloque {
+    box-shadow: 0 10px 10px var(--shadow-soft), 10px 0 10px var(--shadow-soft);
+    display: flex;
+    padding: 3%;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+
+.derecha {
+  width: 50%;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.titulo {
+  color: var(--orange);
+  font-size: 60px;
+  margin: 0;
+  text-shadow: 5px 5px 5px var(--shadow-soft);
+}
+p {
+  text-align: center;
+  font-weight: 500;
+  font-size: 30px;
+  color: var(--white);
+  margin: 1%;
+  text-shadow: 5px 5px 5px var(--shadow-soft);
+}
+.ingresar {
+  background-color: var(--sec);
+  border-radius: 10px 50px 50px 10px;
+  width: 40%;
+  min-width: 30%;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+  font-weight: 500;
+  font-size: 30px;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 0 10px 5px var(--shadow-soft);
+  transition: all 0.5s ease;
+}
+.ingresar:hover {
+  background-color: var(--orange);
+  border-radius: 10px;
+  width: 44%;
+  font-weight: 700;
+  color: var(--pri);
+  box-shadow: 0 0 10px 5px var(--shadow-soft);
+}
+.ingresar:active {
+  background-color: var(--orange);
+  border-radius: 15px;
+  width: 42%;
+  min-width: 30%;
+  margin-left: 29%;
+  font-size: 30px;
+  color: var(--pri);
+  box-shadow: 0 0 10px 1px var(--shadow-soft);
+}
+
+@media screen and (max-width: 700px) {
+  .Inicio {
+    display: flex;
+    flex-direction: column;
+  }
+  .izquierda {
+    width: 100%;
+    border-right: none;
+  }
+  .imginicio {
+    margin-top: 5%;
+    margin-right: 4%;
+  }
+  .derecha {
+    width: 100%;
+    margin-top: 5%;
+  }
+  .titulo {
+    font-size: 17vw;;
+  }
+  .ingresar {
+    margin-bottom: 25%;
+    font-size: 7vw;
+  }
+}

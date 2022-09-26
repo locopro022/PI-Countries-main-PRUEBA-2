@@ -13,10 +13,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    nameOfficial: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     nameCommon: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -40,5 +36,8 @@ module.exports = (sequelize) => {
     population:{
       type: DataTypes.FLOAT,
     },
-  });
+  }, {
+    timestamps: false,
+  },
+  );
 };

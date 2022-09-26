@@ -1,0 +1,139 @@
+.Buscador {
+    /* background-image: radial-gradient(circle at 50% -20.71%, #aeb800 0, #95b600 10%, #7bb015 20%, #5da823 30%, #3c9d2c 40%, #038f33 50%, #008138 60%, #00753c 70%, #006b41 80%, #006245 90%, #005c4a 100%); */
+    height: 50px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 2% 5% 172px 5%;
+    padding: 5px 15px 15px 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 25px 2px;
+
+}
+.headers {
+    display: flex;
+}
+.headers div h5{
+    margin: 0;
+    padding: 0;
+    color: var(--white);
+}
+.headerActv {
+    width: 25%;
+}
+.headerPais {
+    width: 75%;
+}
+.filtros {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.separador {
+    border-left: 1px solid var(--white);
+}
+.actividades {
+    padding: 0 2% 0 2%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+.paises {
+    width: 60%;
+    padding: 0 2% 0 2%;
+    display: flex;
+    justify-content: space-between ;
+}
+
+.contTitulos {
+    text-align: center;
+    width: 100%;
+
+}
+.titulos {
+    width: 100%;
+    padding: 1% 0 1% 0;
+    border-radius: 10px;
+    margin: 0;
+    color: var(--white);
+    transition: all 0.3s ease;
+    justify-content: space-evenly;
+}
+.titulos:hover {
+    cursor: pointer;
+    color: var(--orange);
+}
+.contTitulos:hover .opciones {
+    visibility: visible;
+    opacity: 1;
+    
+}
+.opciones {
+    visibility: hidden;
+    opacity: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(2px);
+    border-radius: 0 15px 15px 15px;
+    margin: 10px;
+    padding: 10px;
+    position: absolute;
+    text-align: left;
+    box-shadow: 1px 1px 5px var(--shadow);
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--sec);
+    transition: all 0.2s linear;
+
+}
+.buscar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.searchBox {
+    border: 1px solid var(--sec);
+    border-radius: 10px;
+    width: 25%;
+    color: var(--green);
+    transition: all 0.2s ease;
+    box-shadow: inset 1px 1px 1px var(--shadow-soft);
+    padding: 1% 5% 1% 5%;
+    font-size: 14px;
+    font-weight: 600;
+}
+.searchBox::placeholder {
+    color: var(--green);
+    transition: all 0.2s ease;
+}
+.searchBox:focus::placeholder {
+    color: rgba(255, 0, 0, 0);
+}
+.searchBox:focus {
+    width: 50%;
+    border: 1px solid var(--pri);
+    outline: none;
+}
+.searchBtn {
+    border-radius: 10px;
+    border: none;
+    background-color: var(--sec);
+    padding: 2% 5% 2% 5%;
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: 0 0 10px var(--shadow);
+    transition: all 0.2s ease;
+}
+.searchBtn:hover {
+    cursor: pointer;
+    background-color: var(--shadow-soft);
+    color: var(--orange);
+    box-shadow: 1px 1px 15px var(--shadow);
+}
+.searchBtn:active {
+    font-size: 13px;
+    background-color: var(--sec);
+    color: var(--white);
+    box-shadow: 1px 1px 5px var(--sec);
+}

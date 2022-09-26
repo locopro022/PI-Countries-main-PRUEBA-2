@@ -1,0 +1,51 @@
+.Navbar {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    box-shadow: 0 5px 10px var(--shadow-soft);
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.enlaces {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px 0 10px;
+}
+.fakeLink {
+    height: 100%;
+    font-weight: 600;
+    padding: 2px 10px 0 10px;
+    margin-bottom: 0;
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--white);
+}
+.link {
+    height: 100%;
+    border-radius: 10px 10px 0 0;
+    font-weight: 600;
+    padding: 2px 10px 0 10px;
+    margin-bottom: 0;
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--white);
+    transition: all 0.2s ease;
+    align-self: flex-end;
+}
+.link:hover {
+    font-size: 25px;
+    color: var(--orange) ;
+    background-color: var(--shadow-soft);
+}
+.link:active {
+    font-size: 22px;
+    background-color: var(--orange);
+    color: var(--white);
+    box-shadow: 0 0 10px var(--sec);
+}
+.linkActive {
+    background-color: var(--orange);
+    color: var(--white);
+}

@@ -6,11 +6,7 @@ import rootReducer from "./reducer";
 import { compose } from "redux";
 
 //primer parametro siempre el reducer
-//segundo parametro el applyMiddleware con thunk y su configuracion de redux devtools
-/* const store = createStore( 
-    rootReducer,                                                    //reducer       
-    composeWithDevTools( applyMiddleware(thunk) ) );     */            //configuracion de redux devtools 
-//CONFIGURACION PARA QUE APAREZCAN LAS DEVTOOLS
+//segundo parametro el applyMiddleware con thunk y su configuracion de redux devtool
 
 const composeEnhancers =
   (typeof window !== "undefined" &&

@@ -1,0 +1,50 @@
+.Home {
+    margin: 0;
+    padding-bottom: 2%;
+    display: flex;
+    flex-direction: column;
+}
+.btn {
+    margin: 2%;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 20px 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    background-color: var(--sec);
+    transition: all 0.2s ease;
+    box-shadow: 0 0 10px 2px var(--shadow-soft);
+}
+.btn:hover {
+    background-color: var(--shadow-soft);
+    color: var(--pri);
+    font-size: 15;
+    padding: 10px 20px 10px 20px;
+    cursor: pointer;
+}
+.btn:active {
+    padding: 10px 20px 10px 20px;
+    font-size: 15;
+    color: white;
+    background-color: var(--sec);
+    box-shadow: 0 0 10px 2px var(--sec);
+}
+.disabled {
+    margin: 2%;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 20px 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--shadow);
+    background-color: var(--shadow-soft);
+    box-shadow: 0 0 10px 2px var(--shadow-soft);
+}
+.cartelPaisesOculto {
+    display: none;
+}
+.cartelPaisesNoOculto {
+    display: block;
+    color: var(--pri);
+}
