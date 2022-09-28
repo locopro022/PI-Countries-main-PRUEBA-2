@@ -99,8 +99,8 @@ function Buscador () {
                 <div className={styles.contTitulos}>
                         <h3 className={styles.titulos}>Poblacion
                          <div className={styles.opciones}>
-                            <input type= 'radio' name="continents"  onChange={(el)=> {handlePopulation(el)}} value={'asc'}/>+ Poblacion<br></br>
-                            <input type= 'radio' name="continents"  onChange={(el)=> {handlePopulation(el)}}  value={'desc'}/>- Poblacion<br></br>                           
+                            <input type= 'radio' name="continents"  onChange={(el)=> {handlePopulation(el)}} value={'asc'}/>- Poblacion<br></br>
+                            <input type= 'radio' name="continents"  onChange={(el)=> {handlePopulation(el)}}  value={'desc'}/>+ Poblacion<br></br>                           
                         </div>
                         </h3>                         
                     </div> 

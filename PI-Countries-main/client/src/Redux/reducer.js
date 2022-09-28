@@ -99,7 +99,7 @@ export default function rootReducer(state = initialState, { type, payload }) {
                     }                
             case GET_FILTERS: {
                 let key = ''
-                if (Object.keys(payload[0])[0] === 'name') key = 'actName'
+                if (payload.length > 0 && Object.keys(payload[0])[0] === 'name') key = 'actName'
                 
                     return {
                         ...state,
