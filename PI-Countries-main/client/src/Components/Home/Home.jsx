@@ -40,7 +40,7 @@ function Home () {
         }
         else document.querySelector('#pagSig').className = styles.btn
         
-        console.log(page, countries.length/10)
+        /* console.log(page, countries.length/10) */
     }, [page, countries.length])
 
     const paginaAnterior = () => {

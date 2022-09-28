@@ -18,6 +18,20 @@ module.exports = {
         const activity = await Activities.findByPk(newActivity.id); //Busco la actividad recién creada
         await activity.setCountries(countries) //Seteo los países designados a dicha actividad
 
+        //Busco la actividad recién relacionada con sus respectivos países 
+        /* const relation = await Activities.findAll({ 
+            where: {
+                id: newActivity.id
+            },
+            include: {
+                model: Country,
+                through: {
+                    attributes: []
+                }
+            }
+        })
+        
+        return relation */
     },
 
     selectNames: async (select) => {

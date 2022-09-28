@@ -108,9 +108,9 @@ export function filterCountriesByRegion(payload){
 //Obtener nombres de actividades para el filtrado         
 export const getFilters = (select) => {
   return async (dispatch) => {
-      return fetch(`/activities/${select}`)
-      .then( r => r.json())
-      .then( r => dispatch({type: GET_FILTERS, payload: r}))
+    const result = await axios.get(`/activities/${select}`)
+      return dispatch({
+      type: GET_FILTERS, payload: result.data})
   }
 }
 
