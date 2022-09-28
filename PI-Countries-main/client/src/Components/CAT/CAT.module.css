@@ -50,10 +50,18 @@ label {
     text-align: left;
     padding-left: 30%;
 }
+.lista img{
+    width: 30px;
+    border-radius: 50%;
+}
 .paisesSeleccionados > h3 {
     text-align: left;
     padding-left: 7%;
     color: var(--orange);
+}
+.img img{
+    width: 30px;
+    border-radius: 50%;
 }
 .btn {
     margin: 2%;

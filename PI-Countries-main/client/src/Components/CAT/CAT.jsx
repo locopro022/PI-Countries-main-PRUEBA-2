@@ -125,8 +125,11 @@ function Cat () {
             document.querySelector('#submit').className = styles.btnError
             document.querySelector('#boton').disabled = true
         })
+        e.target.reset()
+        setSelectedCountries([])
+        setSearchCountries([])        
     }
-
+    console.log(selectedCountries)
     return (
         <div className={styles.catPrincipal} >
             <div className={styles.titulo}>
@@ -186,8 +189,9 @@ function Cat () {
                             if(!selectedCountries.some( arr => arr.id === e.id)) {
                                 return(
                                     <div key={e.id}>
-                                        <input type='checkbox' onClick={event => handleSelected(event, {id: e.id, nameCommon: e.nameCommon})}></input>
+                                        <input type='checkbox' onClick={event => handleSelected(event, {id: e.id, nameCommon: e.nameCommon, img:e.img})}></input>
                                         <span>{e.nameCommon}</span>
+                                        <img src={e.img} alt='img'/>
                                     </div>
                                 )
                             }
@@ -201,9 +205,10 @@ function Cat () {
                         {
                             selectedCountries?.map( e => {
                                 return (
-                                    <div key={e.id}>
+                                    <div className={styles.img} key={e.id}>
                                         <input type='checkbox' defaultChecked onClick={(event) => deleteSelected(event, e.id)}></input>
                                         <span>{e.nameCommon}</span>
+                                        <img src={e.img} alt='img'/>
                                     </div>
                                 )
                             })
