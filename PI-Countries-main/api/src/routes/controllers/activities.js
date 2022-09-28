@@ -18,20 +18,6 @@ module.exports = {
         const activity = await Activities.findByPk(newActivity.id); //Busco la actividad recién creada
         await activity.setCountries(countries) //Seteo los países designados a dicha actividad
 
-        //Busco la actividad recién relacionada con sus respectivos países 
-       /*  const relation = await Activities.findAll({ 
-            where: {
-                id: newActivity.id
-            },
-            include: {
-                model: Country,
-                through: {
-                    attributes: []
-                }
-            }
-        })
-        
-        return relation */
     },
 
     selectNames: async (select) => {
@@ -42,33 +28,4 @@ module.exports = {
         })
         return groups
     },
-    /* bulkCreate: async (arr) => { //DE PRUEBA
-        arr.map( async e => {
-            const newActivity =  await Activities.create({
-                name: e.name,
-                difficult: e.difficult,
-                duration: e.duration,
-                season: e.season,
-            })
-    
-            const activity = await Activities.findByPk(newActivity.id); //Busco la actividad recién creada
-            await activity.setCountries(e.countries) //Seteo los países designados a dicha actividad
-    
-            //Busco la actividad recién relacionada con sus respectivos países 
-            const relation = await Activities.findAll({ 
-                where: {
-                    id: newActivity.id
-                },
-                include: {
-                    model: Country,
-                    through: {
-                        attributes: []
-                    }
-                }
-            })
-            
-        })
-        return 'CREADOS'
-    }
- */
 }

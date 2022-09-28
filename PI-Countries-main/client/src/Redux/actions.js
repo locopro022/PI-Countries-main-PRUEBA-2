@@ -17,7 +17,7 @@ export const SEARCH_COUNTRY_BY_ACTIVITY = 'SEARCH_COUNTRY_BY_ACTIVITY'
 //Ruta obtener todos los paises                             funciona ok
 export function getCountries() {
     return async function (dispatch) {
-    const response = await axios.get("http://localhost:3001/countries");
+    const response = await axios.get("/countries");
     return dispatch({
         type: "GET_COUNTRIES",
         payload: response.data,
@@ -29,7 +29,7 @@ export function getCountries() {
 export function getCountryDetail(id){
     return async function(dispatch){
         try{
-            var detail = await axios.get(`http://localhost:3001/countries/${id}`);
+            var detail = await axios.get(`/countries/${id}`);
             return dispatch({
                 type: 'GET_COUNTRY',
                 payload: detail.data
@@ -44,7 +44,7 @@ export function getCountryDetail(id){
 export function addActivity(payload) {
     return async function (dispatch) {
       try {
-        const response = await axios.post(`http://localhost:3001/activities`, payload);
+        const response = await axios.post(`/activities`, payload);
         return dispatch({
           type: "POST",
           payload: response.data,
@@ -60,7 +60,7 @@ export function addActivity(payload) {
     return async function (dispatch) {
       try {
           if (nameCommon) {
-              return axios.get('http://localhost:3001/countries?name=' + nameCommon)
+              return axios.get('/countries?name=' + nameCommon)
                   .then(res => {
                       dispatch({
                           type: GET_NAME_COUNTRIES, 
@@ -69,7 +69,7 @@ export function addActivity(payload) {
                   })
                   .catch(err => dispatch({type: GET_NAME_COUNTRIES, payload: err.data}))
           }
-          let json = await axios.get('http://localhost:3001/countries');
+          let json = await axios.get('/countries');
           return dispatch({
               type: GET_NAME_COUNTRIES,
               payload: json.data,
@@ -108,7 +108,7 @@ export function filterCountriesByRegion(payload){
 //Obtener nombres de actividades para el filtrado         
 export const getFilters = (select) => {
   return async (dispatch) => {
-      return fetch(`http://localhost:3001/activities/${select}`)
+      return fetch(`/activities/${select}`)
       .then( r => r.json())
       .then( r => dispatch({type: GET_FILTERS, payload: r}))
   }
@@ -120,14 +120,14 @@ export const getFilters = (select) => {
 
 export const getActivity = (name) =>{
   return async (dispatch) =>{
-      const result = await axios.get(`http://localhost:3001/activities?nombre=${name}`);
+      const result = await axios.get(`/activities?nombre=${name}`);
       return dispatch({type: BUSCAR_ACTIVIDAD, payload: result.data})
   }
 }
 
 export const searchCountryByActivity = (activity) => {
   return function (dispatch) {
-      return axios.get(`http://localhost:3001/activities?name=${activity}`)
+      return axios.get(`/activities?name=${activity}`)
           .then((data) => {
               console.log(data.data[0].countries)
               dispatch({
