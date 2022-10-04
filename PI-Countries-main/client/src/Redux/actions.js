@@ -12,8 +12,6 @@ export const SEARCH_COUNTRY_BY_ACTIVITY = 'SEARCH_COUNTRY_BY_ACTIVITY'
 
 
 
-
-
 //Ruta obtener todos los paises                             funciona ok
 export function getCountries() {
     return async function (dispatch) {
@@ -79,6 +77,7 @@ export function addActivity(payload) {
       }
   }
 }
+
 //Ordenar por nombre                                        funciona ok
 export const orderByName = (alf) => {
     return{
@@ -103,9 +102,7 @@ export function filterCountriesByRegion(payload){
   }
 }
 
-
-
-//Obtener nombres de actividades para el filtrado         
+//Obtener nombres de actividades para el filtrado         funciona ok        
 export const getFilters = (select) => {
   return async (dispatch) => {
     const result = await axios.get(`/activities/${select}`)
@@ -114,10 +111,7 @@ export const getFilters = (select) => {
   }
 }
 
-
-
-
-
+//filtrar la actividad seleccionada                       funciona ok
 export const getActivity = (name) =>{
   return async (dispatch) =>{
       const result = await axios.get(`/activities?nombre=${name}`);
@@ -125,6 +119,7 @@ export const getActivity = (name) =>{
   }
 }
 
+//filtrar por actividad                                   funciona ok
 export const searchCountryByActivity = (activity) => {
   return function (dispatch) {
       return axios.get(`/activities?name=${activity}`)

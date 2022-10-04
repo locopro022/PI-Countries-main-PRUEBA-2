@@ -2,9 +2,7 @@ import styles from './MiniCard.module.css';
 import { Link } from 'react-router-dom';
 
 
-
 function MiniCard (props) {
-
 
     return (
         <div className={styles.Card}>

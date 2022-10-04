@@ -19,6 +19,7 @@ function Cat () {
         dispatch(getCountries())
     },[dispatch])
 
+    //estado inicial de los inputs
     const [activity, setActivity] = useState({
         name: '',
         difficult: '',
@@ -26,11 +27,14 @@ function Cat () {
         season: '',
         countries: []
     })
+
+    //estado inicial de los errores
     const [errores, setErrores] = useState({
         name: 'error',
         duration: 'error',
     })
 
+    //verificacion del input NAME
     const handleNameChange = (e) => {
         const cartel = document.querySelector('#cartelError')
         if(e.target.value === '') {
@@ -52,6 +56,8 @@ function Cat () {
             [e.target.name]: e.target.value,
         })
     }
+
+    //verificacion del input DURATION
     const handleDurationChange = (e) => {
         const cartel = document.querySelector('#cartelError')
         if(e.target.value === '') {
@@ -75,6 +81,7 @@ function Cat () {
         })
     }
 
+    //handle que setea la propiedad dificultad y temporada
     const handleInputChange = ( e ) => {
         setActivity({
             ...activity,
@@ -82,7 +89,8 @@ function Cat () {
         })
     }
 
-    effect(() => { //Effect que habilita el boton cuando los campos estén llenos
+    //Effect que habilita el boton cuando los campos estén llenos
+    effect(() => { 
         if(!errores.name && !!activity.difficult && !errores.duration && !!activity.season && activity.countries.length > 0) {
             document.querySelector('#submit').className = styles.btn
             document.querySelector('#boton').disabled = false
@@ -92,11 +100,13 @@ function Cat () {
         }
     }, [activity])
 
-    const handleInputSearch = ( e ) => { //handle del campo de buscar paises
+    //handle del campo de buscar paises
+    const handleInputSearch = ( e ) => { 
         setSearchCountries(countries.filter(item => item.nameCommon.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1))
     }
 
-    const handleSelected = (event, country ) => { //Handle de paises seleccionados
+    //Handle de paises seleccionados
+    const handleSelected = (event, country ) => { 
         if(event.target.checked) {
             setSelectedCountries([...selectedCountries, country])
             setActivity({
@@ -105,7 +115,9 @@ function Cat () {
             })
         }
     }
-    const deleteSelected = (event, country) => { //Handle de paises deseleccionados
+
+    //Handle de paises deseleccionados
+    const deleteSelected = (event, country) => { 
         if (!event.target.checked) {
             setSelectedCountries(selectedCountries.filter(e => e.id !== country))
             setActivity({
@@ -115,6 +127,7 @@ function Cat () {
         } 
     }
 
+    //hanlde de formulario completo
     const submitea2 = (e) => { //submit
         e.preventDefault()
         // console.log(selectedCountries, activity)
@@ -129,16 +142,15 @@ function Cat () {
         setSelectedCountries([])
         setSearchCountries([])        
     }
-    console.log(selectedCountries)
+    /* console.log(selectedCountries) */
+
     return (
         <div className={styles.catPrincipal} >
-            <div className={styles.titulo}>
-                <h1> Formulario de Creación de Actividades Turísticas</h1>
+            <div className={styles.titulo}><h1> Formulario de Creación de Actividades Turísticas</h1>                
             </div>
             <form onSubmit={submitea2} className={styles.form}>
-                <div className={styles.nombre} >
-                    <label>Nombre: </label>
-                    <input name='name' type='text'
+                <div className={styles.nombre} ><label>Nombre: </label>                    
+                    <input autoComplete='off' name='name' type='text'
                         className={styles.inputBox} 
                         placeholder={'Nombre de la actividad...'} 
                         onChange={handleNameChange}>
@@ -146,8 +158,7 @@ function Cat () {
                     <br></br>
                     <br></br>
                 </div>
-                <div className={styles.dificultad} >
-                    <label>Dificultad: </label>
+                <div className={styles.dificultad} > <label>Dificultad: </label>                   
                     <select name='difficult' className={styles.inputBox} onChange={handleInputChange}>
                         <option hidden>Seleccione una dificultad</option>
                         <option>1 - Facil</option>
@@ -158,8 +169,7 @@ function Cat () {
                     </select>
                     <br></br>
                 </div>
-                <div className={styles.duracion}>
-                    <label>Duración Hs: </label>
+                <div className={styles.duracion}> <label>Duración Hs: </label>                   
                     <input name='duration' type='number' min='1' max='8' onKeyDown={ (evt) => evt.key === 'e' && evt.preventDefault() }
                         className={styles.inputBox} 
                         placeholder={'Ingrese una duración'}
@@ -167,8 +177,7 @@ function Cat () {
                     </input>
                     <br></br>
                 </div>
-                <div className={styles.temporada} >
-                    <label>Temporada: </label>
+                <div className={styles.temporada} ><label>Temporada: </label>                    
                     <select name='season' className={styles.inputBox}  onChange={handleInputChange}>
                         <option hidden>Seleccione una estación</option>
                         <option  >Otoño</option>
@@ -178,9 +187,8 @@ function Cat () {
                     </select>
                     <br></br>
                 </div>
-                <div className={styles.paises} >
-                    <label>Países: </label>
-                    <input type='search' name='countries' className={styles.inputBox} placeholder='Seleccione países' onChange={handleInputSearch}></input>
+                <div className={styles.paises} ><label>Países: </label>                    
+                    <input autoComplete='off' type='search' name='countries' className={styles.inputBox} placeholder='Seleccione países' onChange={handleInputSearch}></input>
                     <br></br>
                 </div>
                 <div className={styles.lista} >
@@ -189,18 +197,18 @@ function Cat () {
                             if(!selectedCountries.some( arr => arr.id === e.id)) {
                                 return(
                                     <div key={e.id}>
-                                        <input type='checkbox' onClick={event => handleSelected(event, {id: e.id, nameCommon: e.nameCommon, img:e.img})}></input>
+                                        <input  type='checkbox' onClick={event => handleSelected(event, {id: e.id, nameCommon: e.nameCommon, img:e.img})}></input>
                                         <span>{e.nameCommon}</span>
                                         <img src={e.img} alt='img'/>
                                     </div>
                                 )
                             }
                             else return null
-                        })
+                        }).slice(0,3)
                     }
                 </div>
-                <div className={styles.paisesSeleccionados} >
-                    <h3>SELECCIONADOS:</h3>
+                <div className={styles.paisesSeleccionados} > <h3>SELECCIONADOS:</h3>
+                   
                     <div className={styles.lista}>
                         {
                             selectedCountries?.map( e => {

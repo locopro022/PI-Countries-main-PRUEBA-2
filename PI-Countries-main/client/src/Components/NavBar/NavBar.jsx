@@ -4,8 +4,6 @@ import { NavLink } from 'react-router-dom';
 
 function Navbar () {
 
-
-
     return (
         <div className={styles.Navbar}>
             <div className={styles.enlaces}>

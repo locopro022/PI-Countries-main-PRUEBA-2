@@ -21,7 +21,7 @@ function About () {
             <div className={styles.contPag}>
                 <h1>Country App</h1>
                 <p>Este es un proyecto de SoyHenry's bootcamp.</p>
-                <p>Aqui puedes buscar indormacion de diferentes paises del mundo.</p>
+                <p>Aqui puedes buscar informacion de diferentes paises del mundo.</p>
                 <p>Puedes crear y buscar diferentes actividades turisticas para tus viajes.</p>
                 <br></br>
                 <p>Algunas caracteristicas de esta aplicacion son:</p>

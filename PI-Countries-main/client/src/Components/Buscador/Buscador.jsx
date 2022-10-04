@@ -12,29 +12,29 @@ function Buscador () {
     let actName = useSelector(state => state.actName) //Nombres de actividades traídos de la BD
     const [ actvName, setActvName ] = useState([])    
      
-    //handle barra de busqueda                      ok
+    //handle barra de busqueda                                                 ok
     function handleImputSearch(el){
         el.preventDefault()
         setName(el.target.value)   
         console.log(name)  
     }
-    //hanlde boton de busqueda                      ok
+    //hanlde boton de busqueda                                                 ok
     function handleButonSearch(el){
         el.preventDefault()
         if(!name) return alert("Debes ingresar un pais")
         dispatch(getNameCountries(name))
         setName ("")
     }
-    //handle para ordenar por nombre                ok
+    //handle para ordenar por nombre                                           ok
     function handleOnChange(e) {
         dispatch(orderByName(e.target.value))
     }
-    //handle para ordenar por población             ok
+    //handle para ordenar por población                                         ok
     function handlePopulation(e) {
       dispatch(orderByPop(e.target.value))
   }
     
-    //funcion handle de continentes                 ok
+    //funcion handle de continentes                                            ok
      function handleFilterRegion(el){
         dispatch(filterCountriesByRegion(el.target.value))
         }
@@ -44,7 +44,7 @@ function Buscador () {
         dispatch(getFilters('name'))
     }, [dispatch])
 
-    //handle para filtrar por actividad             ok
+    //handle para filtrar por actividad                                         ok
     const searchActivity = (e) => {
         setActvName([...actvName, e.target.name])
         e.preventDefault();
@@ -64,8 +64,8 @@ function Buscador () {
             </div>
             <div className={styles.filtros}>
                 <div className={styles.actividades}>                        
-                    <div className={styles.contTitulos}>
-                        <h3 className={styles.titulos} >Nombres
+                    <div className={styles.contTitulos}><h3 className={styles.titulos} >Nombres
+                        
                             <div className={styles.opciones}>
                                 {actName?.map( e => {
                                         return (
@@ -80,8 +80,7 @@ function Buscador () {
                 </div>
                 <div className={styles.separador}></div>
                 <div className={styles.paises}>
-                    <div className={styles.contTitulos}>
-                        <h3 className={styles.titulos}>Continentes
+                    <div className={styles.contTitulos}><h3 className={styles.titulos}>Continentes                        
                          <div className={styles.opciones}>
                             <input type= 'radio' name="continents"  onChange={(el)=> {handleFilterRegion(el)}} value={'All'}/>Todos<br></br>
                             <input type= 'radio' name="continents"  onChange={(el)=> {handleFilterRegion(el)}}  value={'Europe'}/> Europe<br></br>
@@ -96,8 +95,8 @@ function Buscador () {
                     </div>
                 </div>
                 <div className={styles.paises}>
-                <div className={styles.contTitulos}>
-                        <h3 className={styles.titulos}>Poblacion
+                <div className={styles.contTitulos}><h3 className={styles.titulos}>Poblacion
+                        
                          <div className={styles.opciones}>
                             <input type= 'radio' name="continents"  onChange={(el)=> {handlePopulation(el)}} value={'asc'}/>- Poblacion<br></br>
                             <input type= 'radio' name="continents"  onChange={(el)=> {handlePopulation(el)}}  value={'desc'}/>+ Poblacion<br></br>                           
@@ -106,8 +105,8 @@ function Buscador () {
                     </div> 
                     </div>
                     <div className={styles.paises}>
-                    <div className={styles.contTitulos}>
-                        <h3 className={styles.titulos}>Alfabetica
+                    <div className={styles.contTitulos}><h3 className={styles.titulos}>Alfabetica
+                        
                          <div className={styles.opciones}>
                             <input type= 'radio' name="continents"  onChange={(el)=> {handleOnChange(el)}} value={'asc'}/>Z-A<br></br>
                             <input type= 'radio' name="continents"  onChange={(el)=> {handleOnChange(el)}}  value={'desc'}/>A-Z<br></br>

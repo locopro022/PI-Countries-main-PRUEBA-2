@@ -3,6 +3,8 @@ const { Activities, Country } = require('../../db.js');
 
 //Exporto el modulo con las funciones de cada operación
 module.exports = {
+
+    //crear nueva actividad
     createActivity: async (name, difficult, duration, season, countries) => {
         //Manejo de errores
         if (!name || !difficult || !duration || !season || !countries) throw new Error('Faltan pasar datos');
@@ -17,23 +19,10 @@ module.exports = {
 
         const activity = await Activities.findByPk(newActivity.id); //Busco la actividad recién creada
         await activity.setCountries(countries) //Seteo los países designados a dicha actividad
-
-        //Busco la actividad recién relacionada con sus respectivos países 
-        /* const relation = await Activities.findAll({ 
-            where: {
-                id: newActivity.id
-            },
-            include: {
-                model: Country,
-                through: {
-                    attributes: []
-                }
-            }
-        })
-        
-        return relation */
     },
 
+
+    //Obtengo todas las actividades
     selectNames: async (select) => {
         const groups = await Activities.findAll({
             attributes: [select],

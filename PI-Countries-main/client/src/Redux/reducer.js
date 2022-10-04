@@ -15,9 +15,7 @@ let initialState = {                       //estado inicial
     country: {},    //Pais detallado en Detalles    
     activities: [],
     allCountries: [],
-    countriesFiltrados: [],
-   
-    
+    countriesFiltrados: [], 
 };
 
 
@@ -27,29 +25,33 @@ export default function rootReducer(state = initialState, { type, payload }) {
             case GET_COUNTRIES:
                 return {
                     ...state,
-                     countries: payload,  
-                     countriesFiltrados: payload,
-                     allCountries: payload        //retornamos el estado anterior con la logica de la accion
+                     countries: payload,  //retornamos el estado anterior con la logica de la accion
+                     countriesFiltrados: payload,       //cargo todos los paises al estado de filtros para tenerlos disponibles
+                     allCountries: payload,
+                     country: {}        //seteamos el estado detail a vacio
                 }
-            //caso trae un pais por ID                      ok
+
+            //caso trae un pais por ID                                      ok
             case GET_COUNTRY:
                 return {
-                    ...state, country: payload
+                    ...state, country: payload             
                 }
-            //caso post de nueva actividad actividades      ok
+
+            //caso post de nueva actividad actividades                      ok
             case POST_ACTIVITY:
                 return {
                     ...state, activities: payload
                 }
-            // caso get barra busqueda de pais por nombre    
+
+            // caso get barra busqueda de pais por nombre                   ok  
             case GET_NAME_COUNTRIES:
                     return{
                         ...state,
                         countriesFiltrados: payload
                     }
-            //caso ordenar por nombre               ok
+            //caso ordenar por nombre                                       ok
             case ORDER_BY_NAME:
-                var orderedCountries = [...state.countries]
+                var orderedCountries = [...state.countriesFiltrados]
                 orderedCountries.sort((country1, country2)=> {
                 if(country1.nameCommon > country2.nameCommon) {
                     return 1
@@ -66,9 +68,10 @@ export default function rootReducer(state = initialState, { type, payload }) {
                 ...state,
                 countriesFiltrados: [...orderedCountries]
                 };
-            //caso ordenar por poblacion            ok
+
+            //caso ordenar por poblacion                                    ok
             case ORDER_BY_POP:
-                var orderedCountriesPop = [...state.countries]
+                var orderedCountriesPop = [...state.countriesFiltrados]
                 orderedCountriesPop.sort((country1, country2)=> {
                 if(country1.population > country2.population) {
                     return 1
@@ -86,17 +89,18 @@ export default function rootReducer(state = initialState, { type, payload }) {
                 countriesFiltrados: [...orderedCountriesPop]
                 };
 
-            //caso filtrar por continente           ok
+            //caso filtrar por continente                                   ok
           case FILTER_BY_REGION:
                     const allCountries = state.countries
                     const filterCountries = allCountries.filter(country => country.continent === payload)
                     const regionFilter = payload === 'All'? allCountries : filterCountries
-                    console.log(regionFilter)
-                    console.log(filterCountries)
+                    /* console.log(regionFilter)
+                    console.log(filterCountries) */
                     return{
                         ...state,
                         countriesFiltrados: regionFilter
-                    }                
+                    }  
+            //caso que renderiza los nombres de las activities              ok           
             case GET_FILTERS: {
                 let key = ''
                 if (payload.length > 0 && Object.keys(payload[0])[0] === 'name') key = 'actName'
@@ -106,7 +110,7 @@ export default function rootReducer(state = initialState, { type, payload }) {
                          [key]: payload
                     }}           
       
-
+            //caso que renderiza el pais de la actividad seleccionado       ok
             case SEARCH_COUNTRY_BY_ACTIVITY:
             return {
                 ...state,
