@@ -10,27 +10,9 @@ const {
 
 const sequelize = 
       process.env.NODE_ENV === 'production'
-        ? new Sequelize({
-            database: DB_NAME,
-            dialect: 'postgres',
-            username: DB_USER,
-            password: DB_PASSWORD,
-            host: DB_HOST,
-            port: 5432,
-            dialect: 'postgres',
-            pool: {
-              max: 3,
-              min: 1,
-              idle: 10000,
-            },
-            dialectOptions: {
-              ssl: {
-                require: true,
-                rejectUnauthorized: false,
-              },
-              keepAlive: true,
-            },
-            ssl: true,
+        ? new Sequelize(`postgresql://postgres:QqonqoEAUnSCa7BBESRo@containers-us-west-145.railway.app:6499/railway`,{
+          logging: false, // set to console.log to see the raw SQL queries
+          native: false, // lets Sequelize know we can use pg-native for ~30% more speed
           }) :
  new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`, {
   logging: false, // set to console.log to see the raw SQL queries

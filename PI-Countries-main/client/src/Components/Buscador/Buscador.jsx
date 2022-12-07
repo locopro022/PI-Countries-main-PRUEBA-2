@@ -61,7 +61,7 @@ function Buscador () {
                 <div className={styles.headerPais}>
                     <h5>Por Países: </h5>
                 </div>
-            </div>
+         -   </div>
             <div className={styles.filtros}>
                 <div className={styles.actividades}>                        
                     <div className={styles.contTitulos}><h3 className={styles.titulos} >Nombres
