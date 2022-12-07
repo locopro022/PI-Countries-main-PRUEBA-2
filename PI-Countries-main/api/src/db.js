@@ -1,3 +1,4 @@
+require("pg")
 require('dotenv').config();
 const { Sequelize, Op } = require('sequelize');
 const fs = require('fs');
@@ -9,15 +10,15 @@ const {
 //Sequelize('postgres://user:pass@example.com:5432/dbname')
 
 const sequelize = 
-      process.env.NODE_ENV === 'production'
-        ? new Sequelize(`postgresql://postgres:QqonqoEAUnSCa7BBESRo@containers-us-west-145.railway.app:6499/railway`,{
+      /* process.env.NODE_ENV === 'production'
+        ? */ new Sequelize(`postgresql://postgres:QqonqoEAUnSCa7BBESRo@containers-us-west-145.railway.app:6499/railway`,{
           logging: false, // set to console.log to see the raw SQL queries
           native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-          }) :
+          })/*  :
  new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-});
+}); */
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
